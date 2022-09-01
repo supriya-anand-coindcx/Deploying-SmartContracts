@@ -13,7 +13,7 @@ beforeEach(async () => {
   inbox = await new web3.eth.Contract(abi)
     .deploy({
       data: evm.bytecode.object,
-      arguments: ['Hi there!'],
+      arguments: ['Hi I am new to blockchain!'],
     })
     .send({ from: accounts[0], gas: '1000000' });
 });
@@ -25,7 +25,7 @@ describe('Inbox', () => {
   it('has a default message', async () => {
     // console.log(inbox);
     const message = await inbox.methods.message().call();
-    assert.equal(message, 'Hi there!');
+    assert.equal(message, 'Hi I am new to blockchain!');
   });
   it('can change the message', async () => {
     await inbox.methods.setMessage('bye').send({ from: accounts[0] });
